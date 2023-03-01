@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+</head>
+<body>
+    <p></p>
+    <script>
+        const p = document.querySelector('p')
+        //变量
+        let timer 
+        let num = 5
+        //删除定时器
+        // clearInterval(timer)
+        //添加定时器
+        movFn()
+        
+            //
+        function movFn(){
+        if(num === 0){
+             window.location = 'http://www.sina.com.cn'
+             clearInterval(timer)
+          }
+            p.innerHTML=`对不起,您访问的页面不存在,将在${num}秒之后跳转页面`
+            num--
+        }
+        timer = window.setInterval(movFn,1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       *{
+            margin: 0;
+            position: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: burlywood;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+       div{
+        width: 20vh;
+        height: 20vh; 
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        border: 1px solid black;
+        border-radius: 10%;
+        /* margin: 10px; */
+        transform: translateX(-400px);
+        opacity: 0;
+        transition: 1s;
+       }
+       div:nth-of-type(even){
+        transform: translateX(400px);
+       }
+       div.show{
+        transform: translateX(0px);
+        opacity: 1;
+       }
+    </style>
+</head>
+<body>
+    <h1>asdas</h1>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <div>你好JavaScrip!</div>
+    <script>
+    const div = document.querySelectorAll('div')
+     window.addEventListener('scroll',showFn)
+     function showFn(){
+      div.forEach(div =>{
+        if (parseFloat(div.getBoundingClientRect().top) < window.innerHeight/6*5) {
+            div.classList.add('show')
+        }else{
+            div.classList.remove('show')
+        }
+      })
+     }
+    </script>
+</body>
+</html>
