@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3925751_h6hqcqb4tp.css">
+    <style>
+        div{
+            width: 400px;
+            height: 300px;
+            background: red url(./1.jpg) no-repeat 0% 0% /cover;
+            position: relative;
+            left: 500px;
+            overflow: hidden;
+        }
+       i{
+            color: red;
+            position: absolute;
+        }
+        .iconfont{
+            /* font-size: 100px; */
+            transform: translate(-50%,-50%);
+            /* transition: 1s; */
+            animation: dig 1s linear;
+        }
+        @keyframes dig {
+            from{
+              transform: translate(-50%,-50%);
+              opacity: 1;
+            }to{
+              transform: translate(-50%,-50%) scale(90);
+              opacity: .5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--
+        1.双击图片显示红心
+        2.红心跟随鼠标显示
+        3.红心使用特效显示
+        4.显示完毕再消失
+        技术分析
+        1.dbxlixk事件+在线图标+createEement()+appendChild()
+        2.i标签的lrft = mouseX-div.offsetLeft-红心的宽度的一半
+        3.使用CSSanimation属性创建
+        4.heart.remove
+    -->
+    <!-- <i class="iconfont icon-hongxin"></i> -->
+    <div></div>
+    <script>
+        const div = document.querySelector('div')
+        div.addEventListener('dblclick',(ev) => {
+           const heart = document.createElement('i')
+           heart.classList.add('iconfont')
+           heart.classList.add('icon-hongxin')
+           console.log(heart);
+            heart.style.left = ev.pageX - div.offsetLeft  +'px'
+           heart.style.top = ev.pageY - div.offsetTop  +'px'
+           div.appendChild(heart)
+           
+          
+           setTimeout(() => {
+            heart.remove()
+           }, 400);
+        })
+    </script>
+</body>
+</html>

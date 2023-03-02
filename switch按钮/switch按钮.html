@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;/*??*/
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            background-color: #0009;
+            display: flex;
+            height: 100%;/*??*/
+            align-items: center;
+            justify-content: center; 
+        }
+        .box{
+            width: 160px;
+            height: 60px;                           
+            border-radius: 60px;
+            background-color: black;
+            position: relative;
+            cursor: pointer;
+        }
+        .circle{
+            width: 60px;
+            height: 60px;
+            background-color: rgba(41, 41, 41, 0.6);
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            transition: 1s;
+        } 
+        .active{
+            background-color: #fff;
+        }
+        .box.active{
+            background-color: #e0e0e0;
+        }
+        .active .circle{
+            left: 100px;
+            background-color: #c5c5c5;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <i class="circle"></i>
+    </div>
+    <script>
+        //目标：点击按钮让他往
+        //1获取元素
+        
+        var oI = document.querySelector('.circle')
+        var oDiv = document.querySelector('.box')
+        // 2添加点击事件
+        oDiv.onclick = function(){
+        // 3 兄该  
+        // this.style.left = '100px'
+        this.classList.toggle('active')
+        document.body.classList.toggle('active')
+    }
+    </script>
+</body>
+</html>
