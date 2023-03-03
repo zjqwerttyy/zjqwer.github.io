@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            background-color: blueviolet;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 1000px;
+            height: 100vh;
+        }
+        #app div{
+            width: 30px;
+            height: 30px;
+            background-color: blue;
+            transition: .5s;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        在#app中生成400siv
+        显示siv
+        排序
+        鼠标滑动是呈现颜色
+    -->
+    <div id="app">
+        
+    </div>
+    <script>
+        const div = document.querySelector('#app')
+        const qw = ['red','blue','aqua','greenyellow','blueviolet','coral']
+        let itmer
+        for (let i = 0; i < 400; i++) {
+            div.innerHTML += '<div></div>'
+        }
+        const divA = document.querySelectorAll('#app div')
+       divA.forEach((div,i) => {
+        div.addEventListener('mouseover',()=>{
+            div.style.background = `${qw[i % qw.length]}`
+        })
+        div.addEventListener('mouseout',()=>{
+            itmer = setTimeout(() => {
+                div.style.background = 'blue'
+            }, 500);
+        })
+       })
+    </script>
+</body>
+</html>

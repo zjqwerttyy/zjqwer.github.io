@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body,button,p{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button{
+            background-color: aqua;
+            width: 100%;
+            border: none;
+            padding: 10px 10px;
+            text-align: left;
+            position: relative;
+        }
+        button::after{
+            content: '+';
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            transform: translateY(-50%);
+            
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: slateblue;
+        }
+        #app{
+            width: 50vw;
+        }
+        .content{
+            max-height: 0;
+            overflow: hidden;
+            background-color: beige;
+            transition: .5s;
+        }
+        .content p{
+            padding: 0 20px;
+        }
+        .show + .content{
+            max-height: 200px;
+        }
+        .show::after{
+            content: '-';
+        }
+    </style>
+</head>
+<body>
+    <!--
+        点击那个那个展开
+        点击的时候加号变成减号
+        点击下一个折叠上一个
+        悬停在任意一个上背景变色
+        悬停在任意一个鼠标变成小手                    
+    -->
+    <div id="app">
+        <div class="itm">
+            <button>第一</button>
+            <div class="content">
+                <p>如何用flutter语言构建简单的Android应用程序
+                    本篇文章重点讲到的是什么是Flutter的Widget，即小部件；以及
+                    如何在Flutter中使用StatelessWidget，即无状态小部件。... </p>
+                <p>如何用flutter语言构建简单的Android应用程序
+                    本篇文章重点讲到的是什么是Flutter的Widget，即小部件；以及
+                    如何在Flutter中使用StatelessWidget，即无状态小部件。...</p>
+            </div>
+        </div>
+        <div class="itm">
+            <button>第二</button>
+            <div class="content">
+                <p>如何用flutter语言构建简单的Android应用程序
+                    本篇文章重点讲到的是什么是Flutter的Widget，即小部件；以及
+                    如何在Flutter中使用StatelessWidget，即无状态小部件。</p>
+                <p>如何用flutter语言构建简单的Android应用程序
+                    本篇文章重点讲到的是什么是Flut</p>
+            </div>
+        </div>
+        <div class="itm">
+            <button>第三</button>
+            <div class="content">
+                <p>如何用flutter语言构建简单的Android应用程序
+                    本篇文章重点讲到的是什么是Flutter的Widget，即小部件
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const btn = document.querySelectorAll('button')
+        let last = btn[0]
+        btn.forEach((btn)=>{
+            btn.addEventListener('click',()=>{
+                // //修改上一个btn
+                // last.nextElementSibling.style.maxHeight = '0'
+                // //点击btn修改nextElementSibling.style.maxHeight
+                // btn.nextElementSibling.style.maxHeight = '200px'
+                // last = btn
+               if (btn.classList.contains('show')) {
+                btn.classList.toggle('show')
+               }else{
+                last.classList.remove('show')
+                btn.classList.add('show')
+                last = btn
+            }
+            })
+        })
+    </script>
+</body>
+</html>
